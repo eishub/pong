@@ -4,7 +4,7 @@
 The pong world is a world where two players play pong. In pong, players have to bounce a ball to keep it in the field. A side wins a round if the other side fails to keep the ball in the field.
 
 ## Player controls
-The left racket is controlled with the letters "w" and "s" on the keyboard. The right racket is controlled with the up and down arrows on the keyboard. 
+The left racket is controlled with the letters "1" and "q" on the keyboard. The right racket is controlled with the up and down arrows on the keyboard. 
 
 GOAL can control the right racket.
 
