@@ -36,11 +36,12 @@ public class Pong extends JFrame implements ActionListener {
 		setTitle("Pong");
 		setBackground(Color.WHITE);
 		setResizable(false);
-		setVisible(true);
 		// setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		panel = new PongPanel(this);
 		add(panel);
+
+		setVisible(true);
 
 		resetGame();
 	}
@@ -156,6 +157,17 @@ public class Pong extends JFrame implements ActionListener {
 	}
 
 	/**
+	 * Close the game
+	 */
+	public void close() {
+		if (timer != null) {
+			timer.stop();
+			timer = null;
+		}
+		setVisible(false);
+	}
+
+	/**
 	 * Main Program Launcher.
 	 * 
 	 * @param args the arguments specified for the application launch
@@ -163,4 +175,5 @@ public class Pong extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		new Pong();
 	}
+
 }
