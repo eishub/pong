@@ -1,3 +1,5 @@
+<img align="right" src="pong.png"/>
+
 # pong
 The pong world is a world where two players play pong. In pong, players have to bounce a ball to keep it in the field.
 
