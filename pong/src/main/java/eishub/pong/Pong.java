@@ -37,7 +37,7 @@ public class Pong extends JFrame implements ActionListener {
     setBackground(Color.WHITE);
     setResizable(false);
     setVisible(true);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    //setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     panel = new PongPanel(this);
     add(panel);
