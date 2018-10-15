@@ -19,6 +19,6 @@ There are two possible actions in pong:
 The following percepta are available:
 * **ball(Horizontal,Vertical)**: the ball currently is at given Horizontal, Vertical position (both values are integers).
 
-* **score(Left, Right)** The current amount of 'winned rounds' for Right and Left side. 
+* **score(Right, Left)** The current amount of 'winned rounds' for Right and Left side. 
 
 * **paddle(height)** The current position of the racket of the right player.
