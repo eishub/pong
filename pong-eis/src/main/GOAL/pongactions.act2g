@@ -1,0 +1,10 @@
+use bwknowledge as knowledge.
+
+define move(Direction) with
+	pre { true }
+	post { true }
+	
+define stop with 
+	pre { true }
+	post { true }
+	

@@ -1,0 +1,8 @@
+use pongknowledge as knowledge.
+use pongactions as actionspec.
+
+module pong {
+		if bel(ball(_,Y), paddle(Z), (Y > Z)) then move('DOWN').
+		if bel(ball(_,Y), paddle(Z), (Y < Z)) then move('UP').
+		if true then stop.
+}

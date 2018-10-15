@@ -1,11 +1,11 @@
-environment{
-	env = "eis_pong-1.0-SNAPSHOT-jar-with-dependencies.jar".	
-}
+use "pong-eis-1.0-SNAPSHOT-jar-with-dependencies.jar" as environment.
 
-agentfiles{
-	"pong.goal".
+define pong as agent {
+   use ponginit as init.
+   use pong as main.
+   use pongevents as event.
 }
 
 launchpolicy{
-	when entity@env do launch pong.
+	when * launch pong.
 }
