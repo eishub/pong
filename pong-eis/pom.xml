@@ -1,19 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>eishub</groupId>
 	<artifactId>pong-eis</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>eis_pong</name>
 	<url>http://maven.apache.org</url>
 
+	<licenses>
+		<license>
+			<name>GNU General Public License (GPL)</name>
+			<url>http://www.gnu.org/licenses/gpl.html</url>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>eishub</name>
+		<url>http://github.com/eishub</url>
+	</organization>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<environmentname>pong</environmentname>
 		<mainclass>nl.tudelft.contextproject.eis.PongInterface</mainclass>
+		<github.global.server>github</github.global.server>
 	</properties>
 
 	<repositories>
@@ -26,6 +40,27 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>eishub</groupId>
+			<artifactId>eis</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>eishub</groupId>
+			<artifactId>pong</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -51,10 +86,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
+				<version>2.6</version>
 				<configuration>
 					<archive>
+						<index>true</index>
 						<manifest>
+							<addClasspath>true</addClasspath>
 							<mainClass>${mainclass}</mainClass>
 						</manifest>
 					</archive>
@@ -132,26 +169,40 @@
 					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.11</version>
+				<configuration>
+					<server>github</server>
+					<!-- git commit message -->
+					<message>Maven artifacts for ${project.name} version
+						${project.version}</message>
+					<!-- matches distribution management repository url above -->
+					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+					<!-- remote branch name -->
+					<branch>refs/heads/master</branch>
+					<merge>true</merge>
+					<includes>
+						<include>**/*</include>
+					</includes>
+					<!-- github repo name -->
+					<repositoryName>mvn-repo</repositoryName>
+					<!-- github organization -->
+					<repositoryOwner>eishub</repositoryOwner>
+				</configuration>
+				<executions>
+					<!-- run site-maven-plugin as part of the build's 'deploy' phase -->
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>deploy</phase>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>eishub</groupId>
-			<artifactId>eis</artifactId>
-			<version>0.5.0</version>
-		</dependency>
-		<dependency>
-			<groupId>eishub</groupId>
-			<artifactId>pong</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
 </project>
