@@ -8,6 +8,8 @@ The left racket is controlled with the letters "1" and "q" on the keyboard. The 
 
 GOAL can control the right racket.
 
+NOTE: if you keep a key pressed, the paddle will briefly move fast and then slow down. This is because the key auto-repeat is coming on, simulating you to press and release the key repeatedly, which thus causes the racket to move and stop repeatedly.
+
 ## Actions
 There are two possible actions in pong:
 
