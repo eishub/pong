@@ -23,18 +23,23 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+/**
+ * The game panel. paints current game status and handles key presses.
+ *
+ */
 public class PongPanel extends JPanel {
+	// beware of bug JDK=8167263 if you want to change these.
 	private static final int DOWN1_KEY = KeyEvent.VK_DOWN;
 	private static final int UP1_KEY = KeyEvent.VK_UP;
 	private static final int DOWN2_KEY = KeyEvent.VK_Q;
 	private static final int UP2_KEY = KeyEvent.VK_1;
 	private static final long serialVersionUID = 6647966072683911536L;
-	private final Font scoreFont = new Font("Tahoma", Font.PLAIN, 35);
-	private final Font vsFont = new Font("Tahoma", Font.PLAIN, 20);
-	private final float[] dash1 = { 10.0f };
-	private final BasicStroke dashed = new BasicStroke(5.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash1,
-			0.0f);
-	private Pong game;
+	private static final Font scoreFont = new Font("Tahoma", Font.PLAIN, 35);
+	private static final Font vsFont = new Font("Tahoma", Font.PLAIN, 20);
+	private static final float[] dash1 = { 10.0f };
+	private static final BasicStroke dashed = new BasicStroke(5.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f,
+			dash1, 0.0f);
+	private final Pong game;
 
 	/**
 	 * Pong Panel constructor.
