@@ -1,7 +1,0 @@
-use pongknowledge as knowledge.
-
-module ponginit {
-	if true then insert(ball(0,0)).
-	if true then insert(paddle(0)).
-	if true then insert(score(0,0)).
-}
