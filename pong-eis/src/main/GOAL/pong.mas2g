@@ -1,0 +1,11 @@
+environment{
+	env = "eis_pong-1.0-SNAPSHOT-jar-with-dependencies.jar".	
+}
+
+agentfiles{
+	"pong.goal".
+}
+
+launchpolicy{
+	when entity@env do launch pong.
+}
