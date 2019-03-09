@@ -1,20 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>eishub</groupId>
-  <artifactId>pong-all</artifactId>
-  <version>-</version>
-  
-  	<packaging>pom</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	
+	<groupId>eishub</groupId>
+	<artifactId>pong-all</artifactId>
+	<version>-</version>
+	<packaging>pom</packaging>
+
 	<modules>
 		<module>pong</module>
 		<module>pong-eis</module>
 	</modules>
 
- <name>The pong environment</name>
-<url>https://github.com/eishub/pong</url>
-<description>A pong game controllable by an EIS-capable agent.</description>
-
+	<name>The pong environment</name>
+	<url>https://github.com/eishub/pong</url>
+	<description>A pong game controllable by an EIS-capable agent.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,5 +33,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	
 </project>
