@@ -19,7 +19,7 @@ public class Pong extends JFrame implements ActionListener {
 	private static final int GAME_HEIGHT = 600;
 	public static final int BORDER_CORRECTION = 16;
 	private boolean playingState = false;
-	private PongPanel panel;
+	private final PongPanel panel;
 	private Timer timer;
 
 	private Ball ball;
@@ -38,8 +38,8 @@ public class Pong extends JFrame implements ActionListener {
 		setResizable(false);
 		// setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		panel = new PongPanel(this);
-		add(panel);
+		this.panel = new PongPanel(this);
+		add(this.panel);
 
 		setVisible(true);
 
@@ -52,91 +52,91 @@ public class Pong extends JFrame implements ActionListener {
 	public void resetGame() {
 
 		// Create game elements
-		ball = new Ball(this);
-		player1 = new Racket(this, this.getWidth() - BORDER_CORRECTION - 5);
-		player2 = new Racket(this, 5);
+		this.ball = new Ball(this);
+		this.player1 = new Racket(this, getWidth() - BORDER_CORRECTION - 5);
+		this.player2 = new Racket(this, 5);
 
 		// Set playing state + start timer/game
-		if (timer != null) {
-			timer.stop();
+		if (this.timer != null) {
+			this.timer.stop();
 		}
-		score1 = 0;
-		score2 = 0;
-		playingState = true;
-		timer = new Timer(5, this);
-		timer.start();
+		this.score1 = 0;
+		this.score2 = 0;
+		this.playingState = true;
+		this.timer = new Timer(5, this);
+		this.timer.start();
 	}
 
 	/**
 	 * Returns a player instance.
-	 * 
+	 *
 	 * @param playerNo The player number.
 	 * @return the player with that num
 	 */
-	public Racket getPlayer(int playerNo) {
+	public Racket getPlayer(final int playerNo) {
 		if (playerNo == 1) {
-			return player1;
+			return this.player1;
 		} else {
-			return player2;
+			return this.player2;
 		}
 	}
 
 	/**
 	 * Returns the ball instance.
-	 * 
+	 *
 	 * @return the ball instance.
 	 */
 	public Ball getBall() {
-		return ball;
+		return this.ball;
 	}
 
 	/**
 	 * Increase the score for a given player number.
-	 * 
+	 *
 	 * @param playerNo The player number.
 	 */
-	public void increaseScore(int playerNo) {
+	public void increaseScore(final int playerNo) {
 		if (playerNo == 1) {
-			score1++;
+			this.score1++;
 		} else {
-			score2++;
+			this.score2++;
 		}
 	}
 
 	/**
 	 * Returns the score for a given player number.
-	 * 
+	 *
 	 * @param playerNo The player number.
 	 * @return the score of the player.
 	 */
-	public int getScore(int playerNo) {
+	public int getScore(final int playerNo) {
 		if (playerNo == 1) {
-			return score1;
+			return this.score1;
 		} else {
-			return score2;
+			return this.score2;
 		}
 	}
 
 	/**
 	 * Set the current game state.
-	 * 
+	 *
 	 * @param newState the state to set the game to
 	 */
-	public void setGameState(boolean newState) {
-		playingState = newState;
+	public void setGameState(final boolean newState) {
+		this.playingState = newState;
 
 		if (newState == false) {
-			timer.stop();
+			this.timer.stop();
 		}
 	}
 
 	/**
 	 * Return the current game state.
-	 * 
+	 *
 	 * @return current game state
 	 */
 	public boolean getGameState() {
-		return playingState;
+		return this.playingState;
 	}
 
 	/**
@@ -151,29 +151,29 @@ public class Pong extends JFrame implements ActionListener {
 	/**
 	 * Callback for java on an action (timer).
 	 */
-	public void actionPerformed(ActionEvent arg0) {
+	@Override
+	public void actionPerformed(final ActionEvent arg0) {
 		update();
-		panel.repaint();
+		this.panel.repaint();
 	}
 
 	/**
 	 * Close the game
 	 */
 	public void close() {
-		if (timer != null) {
-			timer.stop();
-			timer = null;
+		if (this.timer != null) {
+			this.timer.stop();
+			this.timer = null;
 		}
 		setVisible(false);
 	}
 
 	/**
 	 * Main Program Launcher.
-	 * 
+	 *
 	 * @param args the arguments specified for the application launch
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new Pong();
 	}
-
 }

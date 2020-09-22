@@ -12,7 +12,7 @@ import java.awt.Rectangle;
 public class Ball {
 	private static final int WIDTH = 15;
 	private static final int HEIGHT = 15;
-	private Pong game;
+	private final Pong game;
 	private int xlocation;
 	private int ylocation;
 	private int xa = 2;
@@ -20,53 +20,53 @@ public class Ball {
 
 	/**
 	 * Ball constructor, ball starts in the center.
-	 * 
+	 *
 	 * @param game the pong game instance.
 	 */
-	public Ball(Pong game) {
+	public Ball(final Pong game) {
 		this.game = game;
-		xlocation = game.getWidth() / 2;
-		ylocation = game.getHeight() / 2;
+		this.xlocation = game.getWidth() / 2;
+		this.ylocation = game.getHeight() / 2;
 	}
 
 	/**
 	 * Return the horizontal position.
-	 * 
+	 *
 	 * @return the x location of the ball.
 	 */
 	public int getPositionX() {
-		return xlocation;
+		return this.xlocation;
 	}
 
 	/**
 	 * Return the vertical position.
-	 * 
+	 *
 	 * @return the y location of the ball.
 	 */
 	public int getPositionY() {
-		return ylocation;
+		return this.ylocation;
 	}
 
 	/**
 	 * Ball tick frame.
 	 */
 	public void update() {
-		xlocation += xa;
-		ylocation += ya;
-		if (xlocation < 0) {
-			game.increaseScore(2);
-			xlocation = game.getWidth() / 2;
-			xa = -xa;
-		} else if (xlocation > game.getWidth() - WIDTH - 7) {
-			game.increaseScore(1);
-			xlocation = game.getWidth() / 2;
-			xa = -xa;
-		} else if (ylocation < 0 || ylocation > game.getHeight() - HEIGHT - 29) {
-			ya = -ya;
+		this.xlocation += this.xa;
+		this.ylocation += this.ya;
+		if (this.xlocation < 0) {
+			this.game.increaseScore(2);
+			this.xlocation = this.game.getWidth() / 2;
+			this.xa = -this.xa;
+		} else if (this.xlocation > this.game.getWidth() - WIDTH - 7) {
+			this.game.increaseScore(1);
+			this.xlocation = this.game.getWidth() / 2;
+			this.xa = -this.xa;
+		} else if (this.ylocation < 0 || this.ylocation > this.game.getHeight() - HEIGHT - 29) {
+			this.ya = -this.ya;
 		}
 
-		if (game.getScore(1) == 2 || game.getScore(2) == 2) {
-			game.setGameState(false);
+		if (this.game.getScore(1) == 2 || this.game.getScore(2) == 2) {
+			this.game.setGameState(false);
 		}
 		checkCollision();
 	}
@@ -77,28 +77,28 @@ public class Ball {
 	public void checkCollision() {
 		// don't just reverse direction, it may cause ball to 'lock up' when on top of
 		// bat.
-		if (game.getPlayer(1).getBounds().intersects(getBounds())) {
-			xa = -1; // right player hits to the left
-		} else if (game.getPlayer(2).getBounds().intersects(getBounds())) {
-			xa = 1; // left player hits to the right
+		if (this.game.getPlayer(1).getBounds().intersects(getBounds())) {
+			this.xa = -1; // right player hits to the left
+		} else if (this.game.getPlayer(2).getBounds().intersects(getBounds())) {
+			this.xa = 1; // left player hits to the right
 		}
 	}
 
 	/**
 	 * Return the bounds / rect of the ball object.
-	 * 
+	 *
 	 * @return the bounds / rect of the ball object.
 	 */
 	public Rectangle getBounds() {
-		return new Rectangle(xlocation, ylocation, WIDTH, HEIGHT);
+		return new Rectangle(this.xlocation, this.ylocation, WIDTH, HEIGHT);
 	}
 
 	/**
 	 * Paint function of the ball.
-	 * 
+	 *
 	 * @param graphics the graphics object.
 	 */
-	public void paint(Graphics graphics) {
-		graphics.fillOval(xlocation, ylocation, WIDTH, HEIGHT);
+	public void paint(final Graphics graphics) {
+		graphics.fillOval(this.xlocation, this.ylocation, WIDTH, HEIGHT);
 	}
 }
